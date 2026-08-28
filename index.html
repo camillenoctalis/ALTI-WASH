@@ -1,0 +1,879 @@
+<!doctype html>
+<html lang="fr" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AltiWash France — Nettoyage technique par drone | Narbonne &amp; France entière</title>
+<meta name="description" content="AltiWash France réalise le nettoyage par drone de panneaux photovoltaïques, toitures, façades, monuments et patrimoine. Basés près de Narbonne, nous intervenons partout en France. Devis gratuit.">
+<meta name="keywords" content="nettoyage drone Narbonne, nettoyage par drone, nettoyage panneaux photovoltaïques par drone, nettoyage toiture par drone, nettoyage façade par drone, nettoyage patrimoine par drone">
+<meta name="author" content="ALTIWASH FRANCE">
+<meta name="theme-color" content="#06070a">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://altiwash.fr/">
+
+<!-- Partage social -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="AltiWash France">
+<meta property="og:url" content="https://altiwash.fr/">
+<meta property="og:title" content="AltiWash France — Nettoyage technique par drone">
+<meta property="og:description" content="Nettoyage par drone de panneaux photovoltaïques, toitures, façades et patrimoine. Narbonne et France entière.">
+<meta property="og:image" content="https://altiwash.fr/media/og-altiwash.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AltiWash France — Nettoyage technique par drone">
+<meta name="twitter:description" content="Nettoyage par drone de panneaux photovoltaïques, toitures, façades et patrimoine.">
+<meta name="twitter:image" content="https://altiwash.fr/media/og-altiwash.jpg">
+
+<link rel="icon" href="media/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="media/favicon.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="media/apple-touch-icon.png">
+
+<!-- Les deux polices du premier écran sont chargées en priorité. -->
+<link rel="preload" href="fonts/archivo-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Ouverture du site. Décidée ici, avant le premier rendu : posée
+     plus tard, le contenu apparaîtrait puis serait recouvert.
+     Sautée en mouvement réduit et au-delà de la première page vue. -->
+<script>
+(function () {
+  /* Quand rejouer l'ouverture :
+       "toujours" — à chaque chargement et rechargement (réglage actuel)
+       "arrivee"  — à l'arrivée sur le site et au rechargement, mais pas
+                    en passant d'une page du site à une autre
+       "session"  — une seule fois par onglet                            */
+  var QUAND = "toujours";
+
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  if (QUAND === "session") {
+    try {
+      if (sessionStorage.getItem("altiwash-vu")) return;
+      sessionStorage.setItem("altiwash-vu", "1");
+    } catch (e) {}          /* navigation privée : on joue quand même */
+  } else if (QUAND === "arrivee") {
+    var nav = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
+    var rechargement = nav ? nav.type === "reload" : false;
+    var interne = document.referrer.lastIndexOf(location.origin, 0) === 0;
+    if (interne && !rechargement) return;
+  }
+
+  var r = document.documentElement;
+  r.classList.add("ouverture-en-cours");
+  /* Filet de sécurité : si le script principal ne se charge pas, le
+     contenu ne doit pas rester caché derrière un rideau absent. */
+  setTimeout(function () { r.classList.remove("ouverture-en-cours"); }, 4000);
+})();
+</script>
+
+<!-- Données structurées : identité de l'entreprise et catalogue. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://altiwash.fr/#organisation",
+  "name": "ALTIWASH FRANCE",
+  "alternateName": "AltiWash France",
+  "url": "https://altiwash.fr",
+  "logo": "https://altiwash.fr/media/logo-altiwash.png",
+  "image": "https://altiwash.fr/media/og-altiwash.jpg",
+  "description": "Nettoyage technique par drone de panneaux photovoltaïques, toitures, façades, monuments et patrimoine.",
+  "email": "contact@altiwash.fr",
+  "telephone": "+33 7 84 96 23 28",
+  "foundingDate": "2026-08-26",
+  "founder": { "@type": "Person", "name": "Gregory Wolff" },
+  "vatID": "FR58108623687",
+  "taxID": "10862368700010",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "4 Impasse du Stade",
+    "postalCode": "11120",
+    "addressLocality": "Saint-Marcel-sur-Aude",
+    "addressRegion": "Occitanie",
+    "addressCountry": "FR"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 43.2231, "longitude": 2.9535 },
+  "areaServed": { "@type": "Country", "name": "France" },
+  "knowsAbout": [
+    "Nettoyage par drone",
+    "Nettoyage de panneaux photovoltaïques",
+    "Nettoyage de toiture",
+    "Nettoyage de façade",
+    "Entretien du patrimoine bâti"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Prestations de nettoyage par drone",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Nettoyage de panneaux photovoltaïques par drone", "areaServed": "France" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Nettoyage de toiture par drone", "areaServed": "France" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Nettoyage de façade par drone", "areaServed": "France" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Nettoyage de monuments et patrimoine par drone", "areaServed": "France" } }
+    ]
+  }
+}
+</script>
+</head>
+
+<body>
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<!-- ══════════════════ EN-TÊTE ══════════════════ -->
+<header class="site-header">
+  <div class="shell site-header__inner">
+    <a class="logo" href="index.html" aria-label="AltiWash France — retour à l'accueil">
+      <img class="logo__marque" src="media/logo-altiwash.png" alt="" width="36" height="45">
+      <span class="logo__texte">
+        <span class="logo__nom">AltiWash</span>
+        <span class="logo__pays">France</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Navigation principale">
+      <a class="nav__lien" href="index.html" aria-current="page">Accueil</a>
+      <a class="nav__lien" href="prestations.html">Prestations</a>
+      <a class="nav__lien" href="a-propos.html">À propos</a>
+      <a class="nav__lien" href="contact.html">Contact</a>
+    </nav>
+
+    <div class="site-header__actions">
+      <a class="entete__tel index-tech" href="tel:+33784962328">07 84 96 23 28</a>
+
+      <a class="btn btn--primary btn--compact" href="contact.html">
+        <span class="btn__court">Devis</span>
+        <span class="btn__long">Demander un devis</span>
+      </a>
+
+      <button class="burger" type="button" aria-expanded="false" aria-controls="menu-mobile">
+        <span class="sr-only burger__libelle">Ouvrir le menu</span>
+        <span class="burger__trait" aria-hidden="true"><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
+  <span class="progression" aria-hidden="true"></span>
+</header>
+
+<!-- ══════════════════ MENU PLEIN ÉCRAN ══════════════════ -->
+<div class="menu-mobile" id="menu-mobile">
+  <div class="menu-mobile__fond" aria-hidden="true"></div>
+  <nav class="shell menu-mobile__nav" aria-label="Navigation principale">
+    <div class="menu-mobile__item">
+      <a class="menu-mobile__lien" href="index.html">
+        <span class="index-tech t-gold-600">01</span><span class="display">Accueil</span>
+      </a>
+    </div>
+    <div class="menu-mobile__item">
+      <a class="menu-mobile__lien" href="prestations.html">
+        <span class="index-tech t-gold-600">02</span><span class="display">Prestations</span>
+      </a>
+    </div>
+    <div class="menu-mobile__item">
+      <a class="menu-mobile__lien" href="a-propos.html">
+        <span class="index-tech t-gold-600">03</span><span class="display">À propos</span>
+      </a>
+    </div>
+    <div class="menu-mobile__item">
+      <a class="menu-mobile__lien" href="contact.html">
+        <span class="index-tech t-gold-600">04</span><span class="display">Contact</span>
+      </a>
+    </div>
+  </nav>
+  <div class="shell menu-mobile__pied">
+    <a class="btn btn--primary btn--pleine-largeur" href="contact.html">
+      <span class="btn__libelle">Demander un devis</span>
+      <svg class="btn__fleche" viewBox="0 0 22 8" fill="none" aria-hidden="true">
+        <path d="M0 4h20M16.5 0.5 20.5 4l-4 3.5" stroke="currentColor" stroke-width="1.2"/>
+      </svg>
+    </a>
+    <div class="menu-mobile__coordonnees index-tech">
+      <a href="tel:+33784962328">07 84 96 23 28</a>
+      <a href="mailto:contact@altiwash.fr">contact@altiwash.fr</a>
+    </div>
+  </div>
+</div>
+
+<main id="contenu">
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<section class="hero" aria-labelledby="hero-titre">
+  <div class="hero__fond" aria-hidden="true">
+    <div class="hairlines"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="halo hero__halo-azur"></div>
+    <div class="halo hero__halo-or"></div>
+  </div>
+
+  <div class="hero__photo cadre">
+    <img src="media/drone-toiture.webp" alt="Drone hexacoptère AltiWash en vol stationnaire au-dessus d'une toiture en tuiles, sous un ciel dégagé" fetchpriority="high" width="1200" height="1600">
+    <span class="hero__teinte" aria-hidden="true"></span>
+    <span class="hero__degrade" aria-hidden="true"></span>
+    <span class="hero__degrade-bas" aria-hidden="true"></span>
+    <span class="grain" aria-hidden="true"></span>
+  </div>
+
+  <!-- Trajectoire de vol : elle se dessine au chargement, le drone
+       la parcourt. C'est le fil conducteur graphique du site. -->
+  <div class="trace trace--hero" data-autoplay="2.8" aria-hidden="true">
+    <svg viewBox="0 0 800 420" preserveAspectRatio="none">
+      <path class="trace__plan" d="M-10,405 C120,400 200,332 280,272 C360,212 372,100 424,46"/>
+      <path class="trace__vol" d="M-10,405 C120,400 200,332 280,272 C360,212 372,100 424,46"/>
+    </svg>
+    <span class="trace__drone"></span>
+  </div>
+
+  <div class="shell hero__contenu">
+    <div class="hero__bloc">
+      <div class="hero__surtitre">
+        <span class="label-tech t-gold-400">Nettoyage technique par drone</span>
+        <span class="hero__surtitre-filet" aria-hidden="true"></span>
+        <span class="label-tech t-dim">Narbonne · France entière</span>
+      </div>
+
+      <h1 class="display hero__titre lignes" id="hero-titre">
+        <span><span>Le nettoyage</span></span>
+        <span><span class="ligne-accent">par drone</span></span>
+        <span><span>au service de vos</span></span>
+        <span><span>infrastructures</span></span>
+      </h1>
+
+      <p class="lede hero__lede">
+        AltiWash France intervient à Narbonne et partout en France pour le nettoyage technique
+        par drone de panneaux photovoltaïques, toitures, façades, monuments et patrimoine.
+      </p>
+
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="contact.html">
+          <span class="btn__libelle">Demander un devis</span>
+          <svg class="btn__fleche" viewBox="0 0 22 8" fill="none" aria-hidden="true">
+            <path d="M0 4h20M16.5 0.5 20.5 4l-4 3.5" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+        </a>
+        <a class="btn btn--ghost" href="prestations.html">
+          <span class="btn__libelle">Découvrir nos prestations</span>
+          <svg class="btn__fleche" viewBox="0 0 22 8" fill="none" aria-hidden="true">
+            <path d="M0 4h20M16.5 0.5 20.5 4l-4 3.5" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bandeau de faits -->
+  <div class="faits">
+    <div class="shell">
+      <ul class="faits__liste">
+        <li class="faits__item">
+          <span class="index-tech faits__numero">01</span>
+          <span class="faits__texte">France entière</span>
+        </li>
+        <li class="faits__item">
+          <span class="index-tech faits__numero">02</span>
+          <span class="faits__texte">Pilote drone certifié</span>
+        </li>
+        <li class="faits__item faits__item--sm">
+          <span class="index-tech faits__numero">03</span>
+          <span class="faits__texte">Pulvérisation par drone</span>
+        </li>
+        <li class="faits__item faits__item--lg">
+          <span class="index-tech faits__numero">04</span>
+          <span class="faits__texte">RC professionnelle drone</span>
+        </li>
+        <li class="faits__item faits__item--lg">
+          <span class="index-tech faits__numero">05</span>
+          <span class="faits__texte">Devis gratuit</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="defiler" aria-hidden="true">
+    <span class="label-tech" style="font-size:.5625rem;color:var(--paper-dim)">Défiler</span>
+    <span class="defiler__rail"><span></span></span>
+  </div>
+</section>
+
+<!-- ══════════════════ PHOTOVOLTAÏQUE ══════════════════ -->
+<section class="section section--sans-filet" aria-labelledby="pv-titre">
+  <div class="shell">
+    <div class="entete-section">
+      <div class="repere">
+        <span class="index-tech t-gold-400">01</span>
+        <span class="repere__filet" aria-hidden="true"></span>
+        <span class="label-tech t-gold-400">Expertise principale</span>
+      </div>
+      <span class="label-tech t-dim">Photovoltaïque</span>
+    </div>
+
+    <h2 class="display lignes" id="pv-titre" style="margin-top:1.75rem;font-size:clamp(2rem,5vw,3.9rem);color:var(--paper)">
+      <span><span>Le photovoltaïque</span></span>
+      <span><span class="ligne-accent">au cœur</span></span>
+      <span><span>de notre expertise</span></span>
+    </h2>
+  </div>
+
+  <div class="volet pv__bandeau cadre">
+    <span class="parallaxe" data-parallaxe="34"><img class="photo-grade" src="media/photovoltaique.webp" alt="Drone AltiWash pulvérisant de l'eau sur une toiture de panneaux photovoltaïques" loading="lazy" width="1600" height="900"></span>
+    <span class="cadre__voile cadre__voile--teinte" aria-hidden="true"></span>
+    <span class="cadre__voile cadre__voile--degrade" aria-hidden="true"></span>
+    <span class="balayage" aria-hidden="true"></span>
+    <span class="reticule pv__reticule" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+  </div>
+
+  <div class="shell">
+    <div class="pv__editorial">
+      <div class="pv__grille">
+        <div class="pv__texte">
+          <p class="lede reveal">
+            Poussières, pollens, dépôts calcaires, salissures organiques : une installation
+            photovoltaïque s'encrasse en continu. Sur les grandes toitures et les centrales au
+            sol, l'entretien se heurte vite aux contraintes d'accès, à la fragilité des modules
+            et à la sécurité des intervenants.
+          </p>
+          <p class="body-text reveal" style="margin-top:1.5rem">
+            Le drone survole l'installation et traite les modules depuis les airs, sans
+            circulation sur la couverture ni charge ponctuelle sur la structure. La
+            pulvérisation est dosée et dirigée, module par module, rangée par rangée.
+          </p>
+          <div class="reveal" style="margin-top:2.5rem">
+            <a class="btn btn--ghost" href="prestations.html#photovoltaique">
+              <span class="btn__libelle">Découvrir le nettoyage photovoltaïque</span>
+              <svg class="btn__fleche" viewBox="0 0 22 8" fill="none" aria-hidden="true">
+                <path d="M0 4h20M16.5 0.5 20.5 4l-4 3.5" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="pv__points">
+          <ul class="liste-points reveal-groupe">
+            <li><span class="index-tech liste-points__num">01</span><span class="liste-points__texte">Grandes surfaces traitées en continu</span></li>
+            <li><span class="index-tech liste-points__num">02</span><span class="liste-points__texte">Accès simplifié aux toitures et centrales</span></li>
+            <li><span class="index-tech liste-points__num">03</span><span class="liste-points__texte">Aucune circulation sur les modules</span></li>
+            <li><span class="index-tech liste-points__num">04</span><span class="liste-points__texte">Pulvérisation dosée et dirigée</span></li>
+            <li><span class="index-tech liste-points__num">05</span><span class="liste-points__texte">Intervention sans détérioration du support</span></li>
+          </ul>
+          <p class="label-tech t-dim reveal" style="margin-top:1.5rem">
+            Exploitants · Industriels · Bailleurs · Collectivités
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ INDEX DES PRESTATIONS ══════════════════ -->
+<section class="section section--alt" aria-labelledby="prestations-titre">
+  <div class="shell">
+    <div class="entete-section">
+      <div class="repere">
+        <span class="index-tech t-gold-400">02</span>
+        <span class="repere__filet" aria-hidden="true"></span>
+        <span class="label-tech t-gold-400">Nos prestations</span>
+      </div>
+      <span class="label-tech t-dim">Quatre domaines d'intervention</span>
+    </div>
+
+    <h2 class="display lignes" id="prestations-titre" style="margin-top:1.75rem;font-size:clamp(2rem,5vw,3.9rem);color:var(--paper)">
+      <span><span>Quatre surfaces,</span></span>
+      <span><span class="t-dim">une même approche</span></span>
+    </h2>
+
+    <div class="index-prestations">
+      <!-- Aperçu appelé au survol de chaque ligne. -->
+      <div class="index-prestations__apercu" aria-hidden="true">
+        <div class="cadre">
+          <img class="photo-grade" src="media/photovoltaique.webp" alt="" loading="lazy" width="800" height="1000">
+          <span class="cadre__voile" style="background:rgba(8,32,47,.25);mix-blend-mode:multiply"></span>
+          <span class="reticule" style="--taille-reticule:18px"><span></span><span></span><span></span><span></span></span>
+        </div>
+        <div class="cadre">
+          <img class="photo-grade" src="media/drone-toiture.webp" alt="" loading="lazy" width="800" height="1000">
+          <span class="cadre__voile" style="background:rgba(8,32,47,.25);mix-blend-mode:multiply"></span>
+          <span class="reticule" style="--taille-reticule:18px"><span></span><span></span><span></span><span></span></span>
+        </div>
+        <div class="cadre">
+          <img class="photo-grade" src="media/drone-facade.webp" alt="" loading="lazy" width="800" height="1000">
+          <span class="cadre__voile" style="background:rgba(8,32,47,.25);mix-blend-mode:multiply"></span>
+          <span class="reticule" style="--taille-reticule:18px"><span></span><span></span><span></span><span></span></span>
+        </div>
+        <div class="cadre">
+          <img class="photo-grade" src="media/patrimoine.webp" alt="" loading="lazy" width="800" height="1000">
+          <span class="cadre__voile" style="background:rgba(8,32,47,.25);mix-blend-mode:multiply"></span>
+          <span class="reticule" style="--taille-reticule:18px"><span></span><span></span><span></span><span></span></span>
+        </div>
+      </div>
+
+      <!-- Table des matières : les intitulés portent la composition. -->
+      <ul class="index-prestations__liste">
+        <li>
+          <a class="prestation-lien" href="prestations.html#photovoltaique">
+            <span class="prestation-lien__vignette cadre">
+              <img class="photo-grade" src="media/photovoltaique.webp" alt="Drone AltiWash pulvérisant de l'eau sur une toiture de panneaux photovoltaïques" loading="lazy" width="800" height="500">
+              <span class="cadre__voile" aria-hidden="true"></span>
+            </span>
+            <span class="prestation-lien__ligne">
+              <span class="index-tech prestation-lien__num">01</span>
+              <span class="display prestation-lien__titre">Photovoltaïque</span>
+              <span class="prestation-lien__fleche" aria-hidden="true">
+                <svg viewBox="0 0 26 10" fill="none" width="26" height="10">
+                  <path d="M0 5h24M19.5 0.5 24 5l-4.5 4.5" stroke="currentColor" stroke-width="1.2"/>
+                </svg>
+              </span>
+            </span>
+            <span class="prestation-lien__desc">Panneaux &amp; centrales solaires — Notre expertise principale.</span>
+          </a>
+        </li>
+        <li>
+          <a class="prestation-lien" href="prestations.html#toitures">
+            <span class="prestation-lien__vignette cadre">
+              <img class="photo-grade" src="media/drone-toiture.webp" alt="Drone hexacoptère AltiWash en vol au-dessus d'une toiture en tuiles" loading="lazy" width="800" height="500">
+              <span class="cadre__voile" aria-hidden="true"></span>
+            </span>
+            <span class="prestation-lien__ligne">
+              <span class="index-tech prestation-lien__num">02</span>
+              <span class="display prestation-lien__titre">Toitures</span>
+              <span class="prestation-lien__fleche" aria-hidden="true">
+                <svg viewBox="0 0 26 10" fill="none" width="26" height="10">
+                  <path d="M0 5h24M19.5 0.5 24 5l-4.5 4.5" stroke="currentColor" stroke-width="1.2"/>
+                </svg>
+              </span>
+            </span>
+            <span class="prestation-lien__desc">Bâtiments professionnels &amp; industriels — Les grandes couvertures, sans monter dessus.</span>
+          </a>
+        </li>
+        <li>
+          <a class="prestation-lien" href="prestations.html#facades">
+            <span class="prestation-lien__vignette cadre">
+              <img class="photo-grade" src="media/drone-facade.webp" alt="Drone AltiWash pulvérisant la façade en pierre et brique d'un bâtiment en hauteur" loading="lazy" width="800" height="500">
+              <span class="cadre__voile" aria-hidden="true"></span>
+            </span>
+            <span class="prestation-lien__ligne">
+              <span class="index-tech prestation-lien__num">03</span>
+              <span class="display prestation-lien__titre">Façades</span>
+              <span class="prestation-lien__fleche" aria-hidden="true">
+                <svg viewBox="0 0 26 10" fill="none" width="26" height="10">
+                  <path d="M0 5h24M19.5 0.5 24 5l-4.5 4.5" stroke="currentColor" stroke-width="1.2"/>
+                </svg>
+              </span>
+            </span>
+            <span class="prestation-lien__desc">Grandes hauteurs &amp; accès difficiles — Là où les accès s'arrêtent.</span>
+          </a>
+        </li>
+        <li>
+          <a class="prestation-lien" href="prestations.html#monuments-patrimoine">
+            <span class="prestation-lien__vignette cadre">
+              <img class="photo-grade" src="media/patrimoine.webp" alt="Façade d'un édifice patrimonial en pierre de taille vue en contre-plongée" loading="lazy" width="800" height="500">
+              <span class="cadre__voile" aria-hidden="true"></span>
+            </span>
+            <span class="prestation-lien__ligne">
+              <span class="index-tech prestation-lien__num">04</span>
+              <!-- Le patrimoine passe en serif : registre différent, même grille. -->
+              <span class="prestation-lien__titre prestation-lien__titre--serif">Monuments &amp; patrimoine</span>
+              <span class="prestation-lien__fleche" aria-hidden="true">
+                <svg viewBox="0 0 26 10" fill="none" width="26" height="10">
+                  <path d="M0 5h24M19.5 0.5 24 5l-4.5 4.5" stroke="currentColor" stroke-width="1.2"/>
+                </svg>
+              </span>
+            </span>
+            <span class="prestation-lien__desc">Édifices et éléments architecturaux — La précision plutôt que la force.</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <p class="body-text t-dim reveal" style="margin-top:3rem;max-width:32rem">
+      Une surface qui ne figure pas dans cette liste ? Décrivez-la nous : la faisabilité se
+      juge au cas par cas.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════ AVANTAGES ══════════════════ -->
+<section class="section section--avec-trace" aria-labelledby="avantages-titre">
+  <div class="shell">
+    <div class="avantages__grille">
+      <div class="avantages__enonce">
+        <div class="avantages__colle">
+          <div class="repere">
+            <span class="index-tech t-gold-400">03</span>
+            <span class="repere__filet" aria-hidden="true"></span>
+            <span class="label-tech t-gold-400">Pourquoi le drone</span>
+          </div>
+
+          <h2 class="display lignes" id="avantages-titre" style="margin-top:2rem;font-size:clamp(1.9rem,3.6vw,2.9rem);color:var(--paper)">
+            <span><span>La hauteur</span></span>
+            <span><span>n'est plus</span></span>
+            <span><span class="ligne-accent">une contrainte.</span></span>
+          </h2>
+
+          <p class="body-text reveal" style="margin-top:1.75rem;max-width:24rem">
+            Le drone ne remplace pas le savoir-faire : il déplace le point d'accès.
+            L'opérateur reste au sol, la surface est traitée depuis les airs.
+          </p>
+
+          <div class="volet avantages__photo cadre">
+            <span class="parallaxe" data-parallaxe="20"><img class="photo-grade" src="media/drone-terrain.webp" alt="Drone de pulvérisation AltiWash posé sur son aire de décollage, balisage en place" loading="lazy" width="680" height="850"></span>
+            <span class="cadre__voile" aria-hidden="true"></span>
+            <span class="label-tech avantages__legende">Aire de décollage · balisage</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="avantages__table">
+        <dl class="avantages__liste">
+          <div class="avantage reveal">
+            <span class="index-tech" style="font-size:.6875rem;color:var(--gold-600)">01</span>
+            <dt class="display avantage__titre">Intervention sécurisée</dt>
+            <dd class="body-text avantage__texte">L'opérateur reste au sol. L'exposition humaine au travail en hauteur est fortement réduite.</dd>
+          </div>
+          <div class="avantage reveal">
+            <span class="index-tech" style="font-size:.6875rem;color:var(--gold-600)">02</span>
+            <dt class="display avantage__titre">Sans nacelle</dt>
+            <dd class="body-text avantage__texte">Le recours aux moyens d'accès lourds — nacelles, échafaudages, installations spécifiques — est largement évité.</dd>
+          </div>
+          <div class="avantage reveal">
+            <span class="index-tech" style="font-size:.6875rem;color:var(--gold-600)">03</span>
+            <dt class="display avantage__titre">Zones complexes</dt>
+            <dd class="body-text avantage__texte">Surplombs, grandes hauteurs, toitures fragiles, emprises encombrées : le vol s'adapte là où l'accès classique bloque.</dd>
+          </div>
+          <div class="avantage reveal">
+            <span class="index-tech" style="font-size:.6875rem;color:var(--gold-600)">04</span>
+            <dt class="display avantage__titre">Respect des supports</dt>
+            <dd class="body-text avantage__texte">Distance, pression et dosage sont réglés selon la nature du parement, avec l'objectif de préserver la matière.</dd>
+          </div>
+          <div class="avantage reveal">
+            <span class="index-tech" style="font-size:.6875rem;color:var(--gold-600)">05</span>
+            <dt class="display avantage__titre">France entière</dt>
+            <dd class="body-text avantage__texte">Basés dans l'Aude, près de Narbonne, nous nous déplaçons partout en France selon les projets.</dd>
+          </div>
+          <div class="avantage reveal">
+            <span class="index-tech" style="font-size:.6875rem;color:var(--gold-600)">06</span>
+            <dt class="display avantage__titre">Technologie maîtrisée</dt>
+            <dd class="body-text avantage__texte">Matériel professionnel de pulvérisation aéroportée, piloté par un opérateur certifié.</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trajectoire de vol : fil conducteur graphique entre les sections. -->
+  <div class="trace" aria-hidden="true">
+    <svg viewBox="0 0 1400 120" preserveAspectRatio="none">
+      <path class="trace__plan" d="M0,100 C260,100 340,26 620,26 C900,26 980,96 1400,72"/>
+      <path class="trace__vol" d="M0,100 C260,100 340,26 620,26 C900,26 980,96 1400,72"/>
+    </svg>
+    <span class="trace__drone"></span>
+  </div>
+</section>
+
+<!-- ══════════════════ QUALIFICATIONS ══════════════════ -->
+<section class="section section--alt" aria-labelledby="qualifications-titre">
+  <div class="halo" aria-hidden="true" style="left:50%;top:0;height:40vh;width:80vw;transform:translateX(-50%);background:rgba(20,64,95,.12);filter:blur(140px)"></div>
+
+  <div class="shell" style="position:relative">
+    <div class="qualifications__entete">
+      <div class="qualifications__titre-col">
+        <div class="repere">
+          <span class="index-tech t-gold-400">04</span>
+          <span class="repere__filet" aria-hidden="true"></span>
+          <span class="label-tech t-gold-400">Qualifications &amp; assurances</span>
+        </div>
+        <h2 class="display lignes" id="qualifications-titre" style="margin-top:2rem;font-size:clamp(1.9rem,4vw,3.05rem);color:var(--paper)">
+          <span><span>Un cadre</span></span>
+          <span><span>professionnel</span></span>
+          <span><span class="ligne-accent">vérifiable</span></span>
+        </h2>
+      </div>
+      <div class="qualifications__lede-col">
+        <p class="body-text reveal" style="max-width:32rem">
+          Intervenir en hauteur au-dessus de bâtiments en exploitation impose un cadre précis.
+          Voici le nôtre.
+        </p>
+      </div>
+    </div>
+
+    <div class="qualifications__grille reveal-groupe">
+      <article class="qualification">
+        <span class="index-tech" style="font-size:.6875rem;color:var(--gold-600)">01</span>
+        <h3 class="display qualification__titre">Pilote de drone certifié</h3>
+        <p class="body-text qualification__texte">Le télépilote d'AltiWash France est certifié pour l'exploitation professionnelle d'aéronefs sans équipage à bord.</p>
+        <p class="label-tech qualification__meta">Télépilotage professionnel</p>
+      </article>
+      <article class="qualification">
+        <span class="index-tech" style="font-size:.6875rem;color:var(--gold-600)">02</span>
+        <h3 class="display qualification__titre">Qualification pulvérisation</h3>
+        <p class="body-text qualification__texte">Qualification spécifique à la pulvérisation par drone, distincte du télépilotage courant et nécessaire à nos prestations.</p>
+        <p class="label-tech qualification__meta">Épandage aéroporté</p>
+      </article>
+      <article class="qualification">
+        <span class="index-tech" style="font-size:.6875rem;color:var(--gold-600)">03</span>
+        <h3 class="display qualification__titre">Responsabilité civile drone</h3>
+        <p class="body-text qualification__texte">Responsabilité civile professionnelle spécifique à l'activité de drone, couvrant nos interventions sur site.</p>
+        <p class="label-tech qualification__meta">RC professionnelle</p>
+      </article>
+      <article class="qualification">
+        <span class="index-tech" style="font-size:.6875rem;color:var(--gold-600)">04</span>
+        <h3 class="display qualification__titre">Assurance Air Courtage</h3>
+        <p class="body-text qualification__texte">Contrat souscrit auprès d'Air Courtage, courtier spécialisé dans l'assurance des aéronefs sans équipage à bord.</p>
+        <p class="label-tech qualification__meta">Air Courtage</p>
+      </article>
+    </div>
+
+    <p class="index-tech reveal" style="margin-top:2rem;font-size:.6875rem;color:var(--paper-dim)">
+      Attestations et justificatifs transmis sur demande, avant toute intervention.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════ MÉTHODE ══════════════════ -->
+<section class="section" aria-labelledby="methode-titre">
+  <div class="shell">
+    <div class="entete-section">
+      <div class="repere">
+        <span class="index-tech t-gold-400">05</span>
+        <span class="repere__filet" aria-hidden="true"></span>
+        <span class="label-tech t-gold-400">Déroulement</span>
+      </div>
+      <span class="label-tech t-dim">Six étapes</span>
+    </div>
+
+    <h2 class="display lignes" id="methode-titre" style="margin-top:1.75rem;font-size:clamp(2rem,4.6vw,3.5rem);color:var(--paper)">
+      <span><span>De la demande</span></span>
+      <span><span>à la restitution</span></span>
+      <span><span class="t-dim">du site</span></span>
+    </h2>
+
+    <div class="methode__deroule">
+      <div class="methode__rail" aria-hidden="true"></div>
+      <div class="methode__rail-plein" aria-hidden="true"></div>
+
+      <ol class="methode__etapes reveal-groupe">
+        <li class="etape">
+          <span class="index-tech t-gold-600">01</span>
+          <h3 class="display etape__titre">Analyse du besoin</h3>
+          <p class="body-text etape__texte">Nature des surfaces, état d'encrassement, objectifs et contraintes d'exploitation du site.</p>
+        </li>
+        <li class="etape">
+          <span class="index-tech t-gold-600">02</span>
+          <h3 class="display etape__titre">Étude de la surface</h3>
+          <p class="body-text etape__texte">Hauteurs, accès, environnement immédiat, faisabilité du vol et contraintes réglementaires.</p>
+        </li>
+        <li class="etape">
+          <span class="index-tech t-gold-600">03</span>
+          <h3 class="display etape__titre">Proposition et devis</h3>
+          <p class="body-text etape__texte">Méthode retenue, moyens engagés, durée estimée et prix. Le devis est gratuit et sans engagement.</p>
+        </li>
+        <li class="etape">
+          <span class="index-tech t-gold-600">04</span>
+          <h3 class="display etape__titre">Planification</h3>
+          <p class="body-text etape__texte">Créneau d'intervention, conditions météorologiques, coordination avec l'exploitation du site.</p>
+        </li>
+        <li class="etape">
+          <span class="index-tech t-gold-600">05</span>
+          <h3 class="display etape__titre">Intervention par drone</h3>
+          <p class="body-text etape__texte">Balisage, briefing, vol de reconnaissance puis traitement de la surface, opérateur au sol.</p>
+        </li>
+        <li class="etape">
+          <span class="index-tech t-gold-600">06</span>
+          <h3 class="display etape__titre">Contrôle et restitution</h3>
+          <p class="body-text etape__texte">Vérification du résultat, repli du matériel et restitution du site au client.</p>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FONDATEUR ══════════════════ -->
+<section class="section section--alt" aria-labelledby="fondateur-titre">
+  <div class="shell">
+    <div class="fondateur__grille">
+      <div class="fondateur__photo-col">
+        <div class="volet fondateur__photo cadre">
+          <span class="parallaxe" data-parallaxe="28"><img class="photo-field" src="media/drone-terrain.webp" alt="Préparation d'une intervention AltiWash : drone de pulvérisation, aire de décollage et balisage de chantier" loading="lazy" width="900" height="1125"></span>
+          <span class="cadre__voile cadre__voile--teinte" aria-hidden="true"></span>
+          <span class="cadre__voile cadre__voile--vignettage" aria-hidden="true"></span>
+          <span class="reticule reticule--marge" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        </div>
+        <p class="index-tech" style="margin-top:1rem;font-size:.6875rem;color:var(--paper-dim)">
+          Aude · préparation d'intervention
+        </p>
+      </div>
+
+      <div class="fondateur__recit">
+        <div class="repere">
+          <span class="index-tech t-gold-400">06</span>
+          <span class="repere__filet" aria-hidden="true"></span>
+          <span class="label-tech t-gold-400">Le fondateur</span>
+        </div>
+
+        <h2 class="fondateur__citation reveal" id="fondateur-titre">
+          AltiWash France est la rencontre entre l'expérience du terrain et la technologie drone.
+        </h2>
+
+        <p class="body-text reveal" style="margin-top:2rem">
+          Près de dix ans sur les chantiers, dans le montage de structures métalliques et la
+          pose de panneaux photovoltaïques. Assez pour apprendre à lire un bâtiment, à
+          s'adapter à ce qu'on trouve sur place — et pour ne plus se satisfaire du « on a
+          toujours fait comme ça ».
+        </p>
+
+        <p class="body-text reveal" style="margin-top:1.25rem">
+          AltiWash France est née de cet écart : une entreprise technique et ancrée dans le
+          terrain, qui met la technologie au service de problématiques rencontrées chantier
+          après chantier.
+        </p>
+
+        <div class="fondateur__signature reveal">
+          <p class="display" style="font-size:1.0625rem;color:var(--paper)">Gregory Wolff</p>
+          <p class="label-tech" style="margin-top:.5rem;font-size:.5625rem;color:var(--gold-500)">Fondateur · Télépilote</p>
+        </div>
+
+        <div class="reveal" style="margin-top:2.25rem">
+          <a class="btn btn--ghost" href="a-propos.html">
+            <span class="btn__libelle">Découvrir l'entreprise</span>
+            <svg class="btn__fleche" viewBox="0 0 22 8" fill="none" aria-hidden="true">
+              <path d="M0 4h20M16.5 0.5 20.5 4l-4 3.5" stroke="currentColor" stroke-width="1.2"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ BANDEAU DE CONVERSION ══════════════════ -->
+<section class="cta-final" aria-labelledby="cta-final-titre">
+  <div class="cta-final__fond" aria-hidden="true">
+    <div class="cadre">
+      <span class="parallaxe" data-parallaxe="46"><img class="photo-grade-deep" src="media/facade-detail.webp" alt="" loading="lazy" width="1600" height="1000"></span>
+    </div>
+    <div class="cta-final__assombri"></div>
+    <div class="cta-final__vignettage"></div>
+    <div class="cta-final__teinte"></div>
+    <div class="hairlines" style="opacity:.5"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+
+  <div class="shell">
+    <div class="cta-final__bloc">
+      <h2 class="display cta-final__titre lignes" id="cta-final-titre">
+        <span><span>Un bâtiment,</span></span>
+        <span><span>une centrale,</span></span>
+        <span><span>une surface</span></span>
+        <span><span class="ligne-accent">difficile d'accès ?</span></span>
+      </h2>
+
+      <p class="lede reveal" style="margin-top:2rem;max-width:36rem">
+        Étudions ensemble la solution d'intervention la plus adaptée. Le devis est gratuit et
+        sans engagement.
+      </p>
+
+      <div class="cta-final__actions reveal">
+        <a class="btn btn--primary" href="contact.html">
+          <span class="btn__libelle">Demander un devis gratuit</span>
+          <svg class="btn__fleche" viewBox="0 0 22 8" fill="none" aria-hidden="true">
+            <path d="M0 4h20M16.5 0.5 20.5 4l-4 3.5" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+        </a>
+        <a class="btn btn--ghost" href="tel:+33784962328">
+          <span class="btn__libelle">07 84 96 23 28</span>
+        </a>
+      </div>
+
+      <p class="index-tech reveal" style="margin-top:2.5rem;font-size:.6875rem;color:var(--paper-dim)">
+        contact@altiwash.fr · Basés dans l'Aude · Intervention partout en France
+      </p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════════════ PIED DE PAGE ══════════════════ -->
+<footer class="site-footer">
+  <div class="shell">
+    <div class="site-footer__grille">
+      <div class="site-footer__marque">
+        <span class="logo">
+          <img class="logo__marque" src="media/logo-altiwash.png" alt="" width="44" height="55">
+          <span class="logo__texte">
+            <span class="logo__nom">AltiWash</span>
+            <span class="logo__pays">France</span>
+          </span>
+        </span>
+        <p class="body-text t-dim" style="margin-top:1.5rem;max-width:20rem">
+          Nettoyage technique par drone de panneaux photovoltaïques, toitures, façades,
+          monuments et patrimoine.
+        </p>
+        <p class="label-tech t-gold-600" style="margin-top:1.5rem">Narbonne · France entière</p>
+
+        <!-- Réseaux sociaux. Icônes intégrées au HTML : aucun appel
+             à un service extérieur, donc aucun traçage du visiteur. -->
+        <nav class="reseaux" aria-label="AltiWash France sur les réseaux sociaux">
+          <a class="reseaux__lien" href="https://www.linkedin.com/company/altiwash-france/"
+             target="_blank" rel="noopener noreferrer">
+            <span class="sr-only">AltiWash France sur LinkedIn (nouvelle fenêtre)</span>
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true">
+              <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zm1.78 13.02H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/>
+            </svg>
+          </a>
+
+          <a class="reseaux__lien" href="https://www.instagram.com/altiwash"
+             target="_blank" rel="noopener noreferrer">
+            <span class="sr-only">AltiWash France sur Instagram (nouvelle fenêtre)</span>
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true">
+              <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.9 5.9 0 0 0-2.13 1.38A5.9 5.9 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13a5.9 5.9 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.13-1.38 5.9 5.9 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.13A5.9 5.9 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/>
+            </svg>
+          </a>
+
+          <a class="reseaux__lien" href="https://www.facebook.com/profile.php?id=61592875481585"
+             target="_blank" rel="noopener noreferrer">
+            <span class="sr-only">AltiWash France sur Facebook (nouvelle fenêtre)</span>
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true">
+              <path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.1 24 12.07z"/>
+            </svg>
+          </a>
+        </nav>
+      </div>
+
+      <nav class="site-footer__col-prestations" aria-label="Prestations">
+        <h2 class="site-footer__titre">Prestations</h2>
+        <ul class="site-footer__liste">
+          <li><a class="lien-souligne" href="prestations.html#photovoltaique">Photovoltaïque</a></li>
+          <li><a class="lien-souligne" href="prestations.html#toitures">Toitures</a></li>
+          <li><a class="lien-souligne" href="prestations.html#facades">Façades</a></li>
+          <li><a class="lien-souligne" href="prestations.html#monuments-patrimoine">Monuments &amp; patrimoine</a></li>
+        </ul>
+      </nav>
+
+      <nav class="site-footer__col-entreprise" aria-label="Entreprise">
+        <h2 class="site-footer__titre">Entreprise</h2>
+        <ul class="site-footer__liste">
+          <li><a class="lien-souligne" href="a-propos.html">À propos</a></li>
+          <li><a class="lien-souligne" href="contact.html">Devis gratuit</a></li>
+          <li><a class="lien-souligne" href="mentions-legales.html">Mentions légales</a></li>
+          <li><a class="lien-souligne" href="politique-de-confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-footer__col-contact">
+        <h2 class="site-footer__titre">Contact</h2>
+        <ul class="site-footer__liste">
+          <li><a class="lien-souligne" href="mailto:contact@altiwash.fr">contact@altiwash.fr</a></li>
+          <li><a class="lien-souligne" href="tel:+33784962328">07 84 96 23 28</a></li>
+          <li class="t-dim" style="padding-top:.5rem">11120 Saint-Marcel-sur-Aude<br>Aude, Occitanie</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__bandeau index-tech">
+      <p>© 2026 ALTIWASH FRANCE</p>
+      <p>43.2231° N · 2.9535° E</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+</body>
+</html>
