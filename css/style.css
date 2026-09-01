@@ -401,7 +401,9 @@ h4 {
    vue partagent le même rendu. */
 .photo-grade { filter: saturate(0.82) contrast(1.06) brightness(0.9); }
 .photo-grade-deep { filter: saturate(0.62) contrast(1.08) brightness(0.78); }
-.photo-field { filter: saturate(0.5) contrast(1.12) brightness(0.72) hue-rotate(-6deg); }
+/* Les portraits reçoivent un étalonnage plus doux : la peau doit
+   rester lisible, sans sortir du registre désaturé du site. */
+.photo-portrait { filter: saturate(0.86) contrast(1.04) brightness(0.94); }
 
 /* Cadre photographique : l'image remplit et recadre son conteneur. */
 .cadre {
@@ -1322,8 +1324,12 @@ body.menu-actif {
   .index-prestations__liste.a-survol .prestation-lien:focus-visible { opacity: 1; }
 }
 
-/* Vignette intégrée sur petits écrans, faute de survol. */
+/* Vignette intégrée sur petits écrans, faute de survol.
+   Le conteneur est un <span> : sans `display: block`, il reste en
+   ligne et n'applique ni `width` ni `aspect-ratio` — la vignette
+   se réduit alors à une hauteur nulle et l'image disparaît. */
 .prestation-lien__vignette {
+  display: block;
   position: relative;
   margin-bottom: 1.25rem;
   aspect-ratio: 16 / 10;
@@ -1383,6 +1389,10 @@ body.menu-actif {
   color: var(--gold-400);
 }
 .prestation-lien__desc {
+  /* <span> dans un parent en bloc : sans `display: block`, la marge
+     haute et la largeur maximale sont ignorées, et le retrait ne
+     s'applique qu'à la première ligne. */
+  display: block;
   margin-top: 0.75rem;
   max-width: 28rem;
   padding-left: 2.75rem;
@@ -1655,6 +1665,20 @@ body.menu-actif {
 .fondateur__photo .cadre__voile--vignettage {
   background: radial-gradient(120% 90% at 50% 45%, transparent 20%, rgba(6, 7, 10, 0.72) 100%);
 }
+/* Un visage supporte mal le voile prévu pour les vues de chantier :
+   on l'allège dès que le cadre est marqué comme portrait. */
+/* Les photographies de Gregory sont cadrées serré : il reste 0 à 3 %
+   au-dessus du crâne. Le débord de 8 % du plan parallaxe et le
+   scale(1.1) du volet suffisent donc à décapiter le sujet. Sur un
+   portrait, l'image s'affiche à l'échelle 1, sans débord : le volet
+   conserve son rideau, il perd seulement son zoom. */
+.cadre--portrait .parallaxe { inset: 0; transform: none !important; }
+.cadre--portrait.volet img,
+.cadre--portrait .volet img { transform: none; }
+.cadre--portrait .cadre__voile--teinte { background: rgba(8, 32, 47, 0.16); }
+.cadre--portrait .cadre__voile--vignettage {
+  background: radial-gradient(125% 95% at 50% 38%, transparent 42%, rgba(6, 7, 10, 0.5) 100%);
+}
 .fondateur__citation {
   margin-top: 2rem;
   font-family: var(--ff-serif);
@@ -1719,6 +1743,49 @@ body.menu-actif {
 }
 @media (min-width: 640px) {
   .cta-final__actions { flex-direction: row; align-items: center; }
+}
+
+/* ── Bandeau de garanties ──
+   La page À propos détaille le cadre réglementaire ; l'accueil n'en
+   garde que les intitulés, alignés sur une seule rangée. */
+.garanties {
+  margin-top: 3.5rem;
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+@media (min-width: 720px) {
+  .garanties { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .garanties { grid-template-columns: repeat(4, 1fr); }
+}
+.garantie {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--line);
+  padding: 1.75rem 1.5rem 1.75rem 0;
+}
+@media (min-width: 720px) {
+  .garantie { border-right: 1px solid var(--line); }
+  .garantie:nth-child(2n) { border-right: 0; }
+}
+@media (min-width: 1024px) {
+  .garantie { border-right: 1px solid var(--line); padding-left: 1.5rem; }
+  .garantie:first-child { padding-left: 0; }
+  .garantie:nth-child(2n) { border-right: 1px solid var(--line); }
+  .garantie:last-child { border-right: 0; }
+}
+.garantie__num { font-size: 0.6875rem; color: var(--gold-600); }
+.garantie__titre {
+  font-size: 1.0625rem;
+  line-height: 1.25;
+  color: var(--paper);
+}
+.garantie__meta {
+  font-size: 0.5625rem;
+  color: var(--paper-dim);
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -1956,6 +2023,32 @@ body.menu-actif {
 }
 .hors-catalogue .btn { flex-shrink: 0; }
 
+/* ── Bandeau « qui intervient » ──
+   Un portrait en 4/5 face au texte : la prestation reste technique,
+   mais le visiteur voit qui se déplacera sur son site. */
+.telepilote__grille {
+  display: grid;
+  align-items: center;
+  gap: 3rem;
+}
+@media (min-width: 1024px) {
+  .telepilote__grille {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 4rem;
+  }
+  .telepilote__photo-col { grid-column: span 4; }
+  .telepilote__texte { grid-column: 6 / span 7; }
+}
+.telepilote__photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  width: 100%;
+}
+.telepilote__photo .cadre__voile--teinte {
+  background: rgba(8, 32, 47, 0.18);
+  mix-blend-mode: multiply;
+}
+
 /* ══════════════════════════════════════════════════════════════
    11. PAGE À PROPOS
    ══════════════════════════════════════════════════════════════ */
@@ -2080,9 +2173,57 @@ body.menu-actif {
   color: var(--paper-soft);
 }
 
+/* ── Planches de terrain ──
+   Trois prises de vue en 4/5, alignées comme une planche contact.
+   Sur écran large, la seconde est décalée vers le bas : le regard
+   descend au lieu de balayer une rangée trop régulière. */
+.terrain__grille {
+  margin-top: 3.5rem;
+  display: grid;
+  gap: 1.5rem;
+}
+@media (min-width: 640px) {
+  .terrain__grille { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+}
+@media (min-width: 1024px) {
+  .terrain__grille { gap: 2rem; }
+  .terrain__planche:nth-child(2) { margin-top: 3.5rem; }
+  .terrain__planche:nth-child(3) { margin-top: 1.25rem; }
+}
+.terrain__photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  width: 100%;
+}
+.terrain__photo .cadre__voile--teinte {
+  background: rgba(8, 32, 47, 0.2);
+  mix-blend-mode: multiply;
+}
+.terrain__legende {
+  margin-top: 0.875rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.625rem;
+  font-size: 0.6875rem;
+  color: var(--paper-dim);
+}
+.terrain__legende .index-tech { color: var(--gold-600); }
+
 /* ══════════════════════════════════════════════════════════════
    12. PAGE CONTACT ET FORMULAIRE
    ══════════════════════════════════════════════════════════════ */
+
+/* Portrait en tête de colonne : la demande de devis est adressée
+   à quelqu'un, pas à un formulaire anonyme. */
+.contact__portrait {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  width: 100%;
+}
+.contact__portrait .cadre__voile--teinte {
+  background: rgba(8, 32, 47, 0.18);
+  mix-blend-mode: multiply;
+}
 
 .contact__grille {
   display: grid;
@@ -2107,8 +2248,8 @@ body.menu-actif {
   border-top-width: 1px;
   padding-top: 1.75rem;
 }
-.contact__bloc:first-child {
-  margin-top: 0;
+.contact__bloc:first-of-type {
+  margin-top: 2.5rem;
   border-top: 1px solid rgba(109, 83, 32, 0.6);
 }
 .contact__coordonnees {
@@ -2541,6 +2682,29 @@ textarea.champ__saisie {
 .page-404__plan a { color: var(--paper-soft); }
 
 /* ══════════════════════════════════════════════════════════════
+   14 bis. TABLETTE
+   ──────────────────────────────────────────────────────────────
+   Entre 640 et 1024 px, les grilles à douze colonnes ne sont pas
+   encore actives : les médias verticaux passent pleine largeur et
+   atteignent 960 px de haut sur une tablette, ce qui repousse le
+   texte hors de l'écran. On les plafonne, sans toucher au mobile
+   où la pleine largeur reste la bonne réponse.
+   ══════════════════════════════════════════════════════════════ */
+
+@media (min-width: 640px) and (max-width: 1023.98px) {
+  .prestation__media,
+  .recit__media,
+  .fondateur__photo-col,
+  .telepilote__photo-col,
+  .avantages__photo,
+  .contact__portrait {
+    max-width: 25rem;
+  }
+  .prestation__photo-detail { max-width: 30rem; }
+  .page-hero__photo { width: 76%; }
+}
+
+/* ══════════════════════════════════════════════════════════════
    15. MOUVEMENT
    ──────────────────────────────────────────────────────────────
    Le mouvement du site emprunte son vocabulaire au vol et à la
@@ -2918,21 +3082,8 @@ textarea.champ__saisie {
 /* Le tracé du hero se superpose à la photographie, en bas à droite.
    Réservé aux grands écrans : ailleurs, la photo occupe toute la
    largeur et le tracé deviendrait illisible. */
-.trace--hero {
-  display: none;
-}
 @media (min-width: 1024px) {
-  .trace--hero {
-    display: block;
-    position: absolute;
-    right: 0;
-    bottom: 18%;
-    z-index: -5;
-    margin-top: 0;
-    width: 46%;
-    height: 42vh;
   }
-}
 
 /* ══════════════════════════════════════════════════════════════
    Parallaxe

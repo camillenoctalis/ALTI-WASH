@@ -1,0 +1,6 @@
+# Photographies sources non compressées : les versions WebP servies
+# par le site sont générées dans media/ et versionnées, elles.
+media/photo-greg-alti-wash-*.JPG
+media/photo-greg-alti-wash-*.jpg
+
+.DS_Store
